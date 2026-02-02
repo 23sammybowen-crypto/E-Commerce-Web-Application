@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>{{ product.name }}</h1>
+
+{% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width:400px;">
+{% else %}
+    <img src="{% static 'store/default.png' %}" alt="No image" style="max-width:400px;">
+{% endif %}
+
+<p>{{ product.description }}</p>
+<p><strong>${{ product.price }}</strong></p>
+
+<a href="/add-to-cart/{{ product.id }}/" class="btn button">Add to Cart</a>
+
+{% endblock %}
